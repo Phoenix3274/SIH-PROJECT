@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Target Detection System</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Sidebar -->
+    <div class="flex h-screen">
+        <div class="bg-blue-800 text-white w-full md:w-1/5 p-5 fixed md:relative top-0 left-0 md:left-auto md:top-auto md:shadow-lg">
+            <h2 class="text-2xl font-bold mb-6">Dashboard</h2>
+            <ul>
+                <li class="mb-4">
+                    <a href="index.html" class="hover:underline">Home</a>
+                </li>
+                <li class="mb-4">
+                    <a href="overview.html" class="hover:underline">Project Overview</a>
+                </li>
+                <li class="mb-4">
+                    <a href="usage.html" class="hover:underline">Usage</a>
+                </li>
+                <li class="mb-4">
+                    <a href="dashboard.html" class="hover:underline">Dashboard</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 md:ml-1/5 p-5 md:p-10">
+            <h1 class="text-4xl font-bold mb-8">Real-Time Data Monitoring</h1>
+
+            <!-- Objective -->
+            <div class="bg-white p-6 rounded-lg shadow-lg mb-8">
+                <h2 class="text-2xl font-bold mb-4">Objective</h2>
+                <p class="text-lg">To develop a system for target detection by optimizing anomaly detection in hyperspectral images using AI/ML techniques.</p>
+            </div>
+
+            <!-- Metrics -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-bold mb-2">Total Scans</h2>
+                    <p class="text-xl">120</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-bold mb-2">Anomalies Detected</h2>
+                    <p class="text-xl">15</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-bold mb-2">Targets Identified</h2>
+                    <p class="text-xl">8</p>
+                </div>
+            </div>
+
+            <!-- Charts or Data Visualization -->
+            <div class="bg-white p-6 rounded-lg shadow-lg mb-8">
+                <h2 class="text-2xl font-bold mb-4">Anomaly Detection Over Time</h2>
+                <canvas id="anomaly-chart" class="h-64 w-full"></canvas>
+            </div>
+
+            <!-- Latest Scan Data -->
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold mb-4">Latest Scan Data</h2>
+                <table class="w-full table-auto">
+                    <thead>
+                        <tr class="bg-gray-200">
+                            <th class="px-4 py-2">Scan ID</th>
+                            <th class="px-4 py-2">Date</th>
+                            <th class="px-4 py-2">Anomalies</th>
+                            <th class="px-4 py-2">Targets</th>
+                            <th class="px-4 py-2">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border px-4 py-2">12345</td>
+                            <td class="border px-4 py-2">2024-08-30</td>
+                            <td class="border px-4 py-2">3</td>
+                            <td class="border px-4 py-2">2</td>
+                            <td class="border px-4 py-2 text-green-500">Completed</td>
+                        </tr>
+                        <tr>
+                            <td class="border px-4 py-2">12346</td>
+                            <td class="border px-4 py-2">2024-08-29</td>
+                            <td class="border px-4 py-2">4</td>
+                            <td class="border px-4 py-2">1</td>
+                            <td class="border px-4 py-2 text-yellow-500">In Progress</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script to render the chart -->
+    <script>
+        var ctx = document.getElementById('anomaly-chart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Aug 1', 'Aug 2', 'Aug 3', 'Aug 4', 'Aug 5'], // Example labels
+                datasets: [{
+                    label: 'Anomalies Detected',
+                    data: [12, 19, 3, 5, 2], // Example data
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
